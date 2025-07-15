@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router'; // ✅ Importar esto
+
 
 // Angular Material modules
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -27,18 +29,20 @@ import { VentasComponent } from './components/ventas/ventas.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    PagesComponent,
     CategoriasComponent,
     ClientesComponent,
     ComprasComponent,
     ProductosComponent,
-    // ...existing code...
+    VentasComponent,
+    ProveedoresComponent,
     LoginComponent,
-    
     RegisterComponent
   ],
   imports: [
@@ -53,6 +57,8 @@ import { RegisterComponent } from './components/register/register.component';
     MatListModule,
     MatButtonModule,
     MatCardModule,
+    CommonModule,
+    RouterModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

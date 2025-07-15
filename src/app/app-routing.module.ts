@@ -13,23 +13,28 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent },
   {
     path: 'pages',
-    component: PagesComponent,
+    component: PagesComponent,  // Aquí está tu navbar
     children: [
+      { path: 'home', component: HomeComponent },
       { path: 'categorias', component: CategoriasComponent },
       { path: 'clientes', component: ClientesComponent },
       { path: 'compras', component: ComprasComponent },
       { path: 'productos', component: ProductosComponent },
       { path: 'proveedores', component: ProveedoresComponent },
-      { path: 'ventas', component: VentasComponent }
+      { path: 'ventas', component: VentasComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' } // Redirigir a home si solo es /pages
     ]
-  }
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegisterComponent },
+
+  // Redirección general
+  { path: '', redirectTo: '/pages/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/pages/home' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

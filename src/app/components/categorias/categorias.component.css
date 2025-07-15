@@ -1,0 +1,147 @@
+/* Contenedor principal centrado */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Tarjeta blanca con sombra suave */
+.card {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* Títulos principales y secundarios */
+h2, h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Filas con espacio entre columnas */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Columna para formulario */
+.col-md-6 {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Grupos de input con label */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels claros y legibles */
+label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+/* Inputs estilizados */
+input[type="text"] {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1.8px solid #bdc3c7;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+/* Cambiar borde al enfocar */
+input[type="text"]:focus {
+  outline: none;
+  border-color: #1abc9c;
+  box-shadow: 0 0 8px rgba(26, 188, 156, 0.4);
+}
+
+/* Botones básicos */
+.btn {
+  background-color: #1abc9c;
+  border: none;
+  padding: 10px 22px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start;
+}
+
+/* Hover para botones */
+.btn:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
+/* Botón peligro (eliminar) */
+.btn-danger {
+  background-color: #e74c3c;
+  margin-left: 8px;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Tabla con estilo */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  margin-top: 15px;
+}
+
+/* Encabezado tabla */
+.table thead tr {
+  background-color: #34495e;
+  color: white;
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Filas alternadas */
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Botones en tabla */
+.table button.btn {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+/* Margen superior para sección lista */
+.mt-4 {
+  margin-top: 30px;
+}
+
+/* Responsive: columnas en columna para pantallas chicas */
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+  }
+  .col-md-6 {
+    flex: 1 1 100%;
+  }
+}

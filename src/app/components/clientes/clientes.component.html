@@ -1,1 +1,64 @@
-<p>clientes works!</p>
+<div class="container">
+  <div class="card">
+    <h2>Gestión de Clientes</h2>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Agregar Nuevo Cliente</h3>
+        <form (ngSubmit)="agregarCliente()">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" [(ngModel)]="nuevoCliente.nombre" name="nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" [(ngModel)]="nuevoCliente.apellido" name="apellido" required>
+          </div>
+          <div class="form-group">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" [(ngModel)]="nuevoCliente.dni" name="dni" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" [(ngModel)]="nuevoCliente.telefono" name="telefono">
+          </div>
+          <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" [(ngModel)]="nuevoCliente.direccion" name="direccion">
+          </div>
+          <button type="submit" class="btn">Agregar</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="row mt-4">
+      <h3>Lista de Clientes</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.dni }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>
+              <button class="btn" (click)="editarCliente(cliente)">Editar</button>
+              <button class="btn btn-danger" (click)="eliminarCliente(cliente.id)">Eliminar</button>
+              <button class="btn" (click)="verDetalles(cliente)">Detalles</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

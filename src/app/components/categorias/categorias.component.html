@@ -1,1 +1,47 @@
-<p>categorias works!</p>
+<div class="container">
+  <div class="card">
+    <h2>Gestión de Categorías</h2>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Agregar Nueva Categoría</h3>
+        <form (ngSubmit)="agregarCategoria()">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" [(ngModel)]="nuevaCategoria.nombre" name="nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" [(ngModel)]="nuevaCategoria.descripcion" name="descripcion">
+          </div>
+          <button type="submit" class="btn">Agregar</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="row mt-4">
+      <h3>Lista de Categorías</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let categoria of categorias">
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.nombre }}</td>
+            <td>{{ categoria.descripcion }}</td>
+            <td>
+              <button class="btn" (click)="editarCategoria(categoria)">Editar</button>
+              <button class="btn btn-danger" (click)="eliminarCategoria(categoria.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

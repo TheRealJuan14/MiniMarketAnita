@@ -1,20 +1,33 @@
-.title {
-  font-weight: 700;
-  color: #3f51b5;
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
 }
 
-.card-link {
-  text-decoration: none;
+.dashboard-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.custom-card {
-  border-radius: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 1.5rem;
-  height: 100%;
-}
-
-.custom-card:hover {
+.dashboard-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.dashboard-item i {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.dashboard-item span {
+  display: block;
+  font-weight: bold;
+  color: #333;
 }

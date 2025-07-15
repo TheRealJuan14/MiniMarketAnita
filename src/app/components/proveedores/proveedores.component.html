@@ -1,1 +1,60 @@
-<p>proveedores works!</p>
+<div class="container mt-4">
+  <h2>Registro de Proveedores</h2>
+
+  <form (ngSubmit)="agregarProveedor()" #formProveedor="ngForm">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nuevoProveedor.nombre" class="form-control" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="ruc" class="form-label">RUC</label>
+        <input type="text" id="ruc" name="ruc" [(ngModel)]="nuevoProveedor.ruc" class="form-control" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input type="text" id="direccion" name="direccion" [(ngModel)]="nuevoProveedor.direccion" class="form-control" />
+      </div>
+
+      <div class="col-md-6">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" [(ngModel)]="nuevoProveedor.telefono" class="form-control" />
+      </div>
+
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="nuevoProveedor.email" class="form-control" />
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Guardar Proveedor</button>
+      </div>
+    </div>
+  </form>
+
+  <hr class="my-4" />
+
+  <h3>Lista de Proveedores</h3>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>RUC</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedores">
+        <td>{{ proveedor.nombre }}</td>
+        <td>{{ proveedor.ruc }}</td>
+        <td>{{ proveedor.direccion }}</td>
+        <td>{{ proveedor.telefono }}</td>
+        <td>{{ proveedor.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

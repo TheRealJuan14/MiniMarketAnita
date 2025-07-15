@@ -1,0 +1,141 @@
+/* Contenedor principal */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+/* Tarjeta */
+.card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h2, h3 {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Fila para disposición de elementos */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Columna para formulario */
+.col-md-6 {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+/* Estilo de formularios */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Grupo de campos */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input[type="text"] {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1.8px solid #bdc3c7;
+  border-radius: 6px;
+  transition: border 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 6px rgba(41, 128, 185, 0.4);
+}
+
+/* Botones */
+.btn {
+  background-color: #2980b9;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #1c5980;
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  margin-left: 6px;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.table thead {
+  background-color: #34495e;
+  color: white;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table button {
+  margin-right: 5px;
+}
+
+/* Margen superior personalizado */
+.mt-4 {
+  margin-top: 30px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-6 {
+    flex: 1 1 100%;
+  }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

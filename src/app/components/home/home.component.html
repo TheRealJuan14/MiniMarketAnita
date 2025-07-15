@@ -1,79 +1,25 @@
-<div class="home-container container mt-5">
-  <h2 class="text-center mb-4 title">Bienvenido al Sistema</h2>
-
-  <div class="row g-4">
-
-    <!-- Categorías -->
-    <div class="col-12 col-md-4">
-      <a routerLink="/categorias" class="card-link">
-        <div class="custom-card bg-primary text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title">Categorías</h5>
-            <p class="card-text">Gestiona las categorías de productos</p>
-          </div>
-        </div>
-      </a>
+<div class="container">
+  <div class="card">
+    <h2>Bienvenido al Sistema de Gestión de Minimarket</h2>
+    <p>Seleccione una opción del menú para comenzar.</p>
+    
+    <div class="dashboard">
+      <div class="dashboard-item" routerLink="/ventas">
+        <i class="fas fa-cash-register"></i>
+        <span>Ventas</span>
+      </div>
+      <div class="dashboard-item" routerLink="/productos">
+        <i class="fas fa-boxes"></i>
+        <span>Productos</span>
+      </div>
+      <div class="dashboard-item" routerLink="/clientes">
+        <i class="fas fa-users"></i>
+        <span>Clientes</span>
+      </div>
+      <div class="dashboard-item" routerLink="/compras">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Compras</span>
+      </div>
     </div>
-
-    <!-- Clientes -->
-    <div class="col-12 col-md-4">
-      <a routerLink="/clientes" class="card-link">
-        <div class="custom-card bg-success text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title">Clientes</h5>
-            <p class="card-text">Administra a tus clientes</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Compras -->
-    <div class="col-12 col-md-4">
-      <a routerLink="/compras" class="card-link">
-        <div class="custom-card bg-warning text-dark">
-          <div class="card-body text-center">
-            <h5 class="card-title">Compras</h5>
-            <p class="card-text">Controla tus compras</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Productos -->
-    <div class="col-12 col-md-4">
-      <a routerLink="/productos" class="card-link">
-        <div class="custom-card bg-danger text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title">Productos</h5>
-            <p class="card-text">Gestiona productos disponibles</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Proveedores -->
-    <div class="col-12 col-md-4">
-      <a routerLink="/proveedores" class="card-link">
-        <div class="custom-card bg-info text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title">Proveedores</h5>
-            <p class="card-text">Gestiona tus proveedores</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Ventas -->
-    <div class="col-12 col-md-4">
-      <a routerLink="/ventas" class="card-link">
-        <div class="custom-card bg-secondary text-white">
-          <div class="card-body text-center">
-            <h5 class="card-title">Ventas</h5>
-            <p class="card-text">Consulta las ventas realizadas</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
   </div>
 </div>

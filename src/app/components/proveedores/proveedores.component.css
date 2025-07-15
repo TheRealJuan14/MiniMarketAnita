@@ -1,0 +1,104 @@
+/* Contenedor general */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Títulos */
+h2, h3 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* Formulario */
+form {
+  margin-bottom: 30px;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #34495e;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+  border: 1.5px solid #bdc3c7;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #2980b9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+}
+
+button.btn-primary {
+  background-color: #2980b9;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+button.btn-primary:hover {
+  background-color: #1f6391;
+  transform: translateY(-1px);
+}
+
+/* Tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.table thead {
+  background-color: #34495e;
+  color: white;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input,
+  button {
+    width: 100%;
+  }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

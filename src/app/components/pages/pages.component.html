@@ -1,1 +1,21 @@
-<p>pages works!</p>
+<!-- Layout principal con barra de navegación y router-outlet -->
+<div class="layout-container">
+  <!-- Barra de navegación -->
+  <nav class="navbar">
+    <button pButton type="button" label="Login" (click)="irALogin()">Login</button>
+    <button pButton type="button" label="Registro" (click)="irARegistro()">Registro</button>
+    <button pButton type="button" label="Home" (click)="irAHome()">Home</button>
+    <button pButton type="button" label="Pages" (click)="irAPages()">Pages</button>
+    <button pButton type="button" label="Categorias" (click)="irACategorias()">Categorias</button>
+    <button pButton type="button" label="Clientes" (click)="irAClientes()">Clientes</button>
+    <button pButton type="button" label="Compras" (click)="irACompras()">Compras</button>
+    <button pButton type="button" label="Productos" (click)="irAProductos()">Productos</button>
+    <button pButton type="button" label="Proveedores" (click)="irAProveedores()">Proveedores</button>
+    <button pButton type="button" label="Ventas" (click)="irAVentas()">Ventas</button>
+  </nav>
+
+  <!-- Contenido dinámico de rutas hijas -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,133 @@
+/* Contenedor principal */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Títulos */
+h2, h3, h4 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Form-group */
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+select, input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1.5px solid #bdc3c7;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+select:focus, input[type="number"]:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+}
+
+/* Botones */
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.btn-success {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn.btn-success:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.btn.btn-danger {
+  background-color: #c0392b;
+  color: white;
+}
+
+/* Tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.table thead {
+  background-color: #34495e;
+  color: #fff;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tfoot tr td {
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+}
+
+/* Utilidades */
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  select, input[type="number"], .btn {
+    width: 100%;
+  }
+
+  .table th, .table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
