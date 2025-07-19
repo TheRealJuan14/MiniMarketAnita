@@ -30,6 +30,9 @@ import { PagesComponent } from './components/pages/pages.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CommonModule } from '@angular/common';
+import { MenuModule } from 'primeng/menu';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,10 +61,16 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatCardModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    MenuModule
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

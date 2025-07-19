@@ -1,26 +1,47 @@
 <div class="login-container">
-  <h2>Iniciar sesión</h2>
+  <h2>Iniciar Sesión</h2>
+
   <form (ngSubmit)="login()" #loginForm="ngForm">
+    <!-- Email -->
     <div class="input-icon-group">
-      <label for="email">Email</label>
       <div class="icon-input-wrapper">
-        <i class="fa-regular fa-user"></i>
-        <input type="email" id="email" name="email" [(ngModel)]="email" required />
+        <span>📧</span>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          placeholder="Correo electrónico"
+        />
       </div>
     </div>
 
+    <!-- Contraseña -->
     <div class="input-icon-group">
-      <label for="password">Contraseña</label>
       <div class="icon-input-wrapper">
-        <i class="fa-solid fa-lock"></i>
-        <input type="password" id="password" name="password" [(ngModel)]="password" required />
+        <span>🔒</span>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          placeholder="Contraseña"
+        />
       </div>
     </div>
 
+    <!-- Mensaje de error -->
     <div *ngIf="error" class="error">{{ error }}</div>
 
-    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+    <!-- Botón de inicio de sesión -->
+    <button type="submit" [disabled]="!loginForm.form.valid">
+      Iniciar sesión
+    </button>
   </form>
 
-  <p>¿No tienes cuenta? <a [routerLink]="['/register']">Regístrate</a></p>
+  <!-- Enlace para registrarse -->
+  <div class="register-link">
+    ¿No tienes cuenta?
+    <a routerLink="/register">Regístrate aquí</a>
+  </div>
 </div>

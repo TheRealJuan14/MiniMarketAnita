@@ -2,8 +2,7 @@
 <div class="layout-container">
   <!-- Barra de navegación -->
   <nav class="navbar">
-    <button pButton type="button" label="Login" (click)="irALogin()">Login</button>
-    <button pButton type="button" label="Registro" (click)="irARegistro()">Registro</button>
+    <div class="navbar-buttons">
     <button pButton type="button" label="Home" (click)="irAHome()">Home</button>
     <button pButton type="button" label="Pages" (click)="irAPages()">Pages</button>
     <button pButton type="button" label="Categorias" (click)="irACategorias()">Categorias</button>
@@ -12,6 +11,12 @@
     <button pButton type="button" label="Productos" (click)="irAProductos()">Productos</button>
     <button pButton type="button" label="Proveedores" (click)="irAProveedores()">Proveedores</button>
     <button pButton type="button" label="Ventas" (click)="irAVentas()">Ventas</button>
+  </div>
+      <!-- Perfil de usuario -->
+  <div class="user-profile">
+    <p-menu #menu [popup]="true" [model]="perfilMenu">Cerrar Sesion</p-menu>
+    <button pButton type="button" icon="pi pi-user" (click)="menu.toggle($event)"></button>
+  </div>
   </nav>
 
   <!-- Contenido dinámico de rutas hijas -->

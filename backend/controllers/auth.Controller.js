@@ -3,19 +3,18 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
-  const { nombre, email, password } = req.body;
-  if (!nombre || !email || !password) {
-    return res.status(400).json({ error: 'Faltan campos requeridos' });
-  }
-  const hash = await bcrypt.hash(password, 10);
+  const { nombre, email, password, role } = req.body;
   try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const result = await pool.query(
-      'INSERT INTO usuarios (nombre, email, password) VALUES ($1, $2, $3) RETURNING *',
-      [nombre, email, hash]
+      'INSERT INTO usuarios (nombre, email, password, rol) VALUES ($1, $2, $3, $4) RETURNING *',
+      [nombre, email, hashedPassword, role || 'user']
     );
-    res.json(result.rows[0]);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+
+    res.status(201).json({ user: result.rows[0] });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al registrar', error: error.message });
   }
 };
 
@@ -23,16 +22,25 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const result = await pool.query('SELECT * FROM usuarios WHERE email = $1', [email]);
-    const user = result.rows[0];
-    if (user && await bcrypt.compare(password, user.password)) {
-      // Incluye el usuario completo en el payload bajo la clave 'user'
-      const token = jwt.sign({ user: { id: user.id, email: user.email, role: user.role } }, process.env.JWT_SECRET);
-      res.json({ token, user });
-    } else {
-      res.status(401).json({ error: 'Credenciales inválidas' });
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
     }
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+
+    const user = result.rows[0];
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Contraseña incorrecta' });
+    }
+
+    const token = jwt.sign(
+      { user: { id: user.id, role: user.rol } },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    res.json({ token });
+  } catch (error) {
+    res.status(500).json({ message: 'Error en login', error: error.message });
   }
 };
 

@@ -10,6 +10,8 @@ const {
 } = require('../controllers/productos.controller');
 
 // Rutas públicas
+
+// Rutas públicas
 router.get('/', getAllProductos);
 router.get('/:id', getProductoById);
 
@@ -17,5 +19,6 @@ router.get('/:id', getProductoById);
 router.post('/', auth, adminAuth, createProducto);
 router.put('/:id', auth, adminAuth, updateProducto);
 router.delete('/:id', auth, adminAuth, deleteProducto);
+
 
 module.exports = router;

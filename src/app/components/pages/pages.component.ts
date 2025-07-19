@@ -12,6 +12,29 @@ export class PagesComponent {
   // Inyecta el Router para navegación
   constructor(private router: Router) {}
 
+  // Menú de perfil para configuración y cerrar sesión
+  perfilMenu = [
+    {
+      label: 'Configuración',
+      icon: 'pi pi-cog',
+      command: () => {
+        // Aquí podrías navegar a configuración del perfil
+        console.log('Ir a configuración');
+      }
+    },
+    {
+      label: 'Cerrar sesión',
+      icon: 'pi pi-sign-out',
+      command: () => this.logout()
+    }
+  ];
+
+  // Método para cerrar sesión
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
   // Métodos para navegar a las rutas correspondientes
   irALogin() {
     this.router.navigate(['/login']);

@@ -8,20 +8,29 @@
   color: #333;
 }
 
-/* Barra de navegación estilo navbar horizontal */
+/* NAVBAR COMPLETA */
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   background: #2c3e50;
   padding: 12px 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   z-index: 1000;
 }
 
+/* Botones centrados en la barra */
+.navbar-buttons {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 /* Estilo para cada botón */
-.navbar button {
+.navbar-buttons button {
   background: #34495e;
   border: none;
   color: #ecf0f1;
@@ -31,21 +40,43 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Hover para los botones */
-.navbar button:hover {
+.navbar-buttons button:hover {
   background: #1abc9c;
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(26, 188, 156, 0.5);
 }
 
-/* Botones activos (opcional, para marcar la página actual) */
-.navbar button.active {
+/* Botón activo (opcional) */
+.navbar-buttons button.active {
   background: #16a085;
   box-shadow: 0 4px 8px rgba(22, 160, 133, 0.7);
+}
+
+/* Contenedor del ícono de perfil */
+.user-profile {
+  margin-left: auto;
+}
+
+/* Botón de perfil */
+.user-profile button {
+  background: #34495e;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover del ícono de perfil */
+.user-profile button:hover {
+  background-color: #1abc9c;
 }
 
 /* Contenido principal que ocupa el resto del espacio */
@@ -58,16 +89,33 @@
   width: 90%;
   max-width: 1200px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsividad: botones en columnas en pantallas muy pequeñas */
-@media (max-width: 480px) {
+/* Responsive para móviles */
+@media (max-width: 768px) {
   .navbar {
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .navbar button {
+
+  .navbar-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navbar-buttons button {
     flex: 1 1 100%;
-    max-width: 200px;
+    max-width: 100%;
+  }
+
+  .user-profile {
+    align-self: flex-end;
+  }
+
+  .main-content {
+    padding: 1rem;
+    margin: 10px;
   }
 }
