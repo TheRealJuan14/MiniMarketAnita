@@ -79,6 +79,7 @@
   background-color: #1abc9c;
 }
 
+
 /* Contenido principal que ocupa el resto del espacio */
 .main-content {
   flex-grow: 1;

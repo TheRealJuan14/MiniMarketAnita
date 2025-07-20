@@ -15,7 +15,14 @@
       <!-- Perfil de usuario -->
   <div class="user-profile">
     <p-menu #menu [popup]="true" [model]="perfilMenu">Cerrar Sesion</p-menu>
-    <button pButton type="button" icon="pi pi-user" (click)="menu.toggle($event)"></button>
+    <button pButton type="button" (click)="menu.toggle($event)">
+  <span class="p-button-icon-left">
+    <i class="fa-solid fa-circle-user"></i>
+  </span>
+  <span class="p-button-label"></span>
+</button>
+
+
   </div>
   </nav>
 
