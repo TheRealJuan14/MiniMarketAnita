@@ -17,35 +17,21 @@ export class CategoriasService {
 
   constructor(private http: HttpClient) { }
 
-  private obtenerHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
-    return new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    });
-  }
+
 
   getCategorias(): Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(this.apiUrl, {
-      headers: this.obtenerHeaders()
-    });
+    return this.http.get<Categoria[]>(this.apiUrl);
   }
 
   crearCategoria(categoria: Partial<Categoria>): Observable<Categoria> {
-    return this.http.post<Categoria>(this.apiUrl, categoria, {
-      headers: this.obtenerHeaders()
-    });
+    return this.http.post<Categoria>(this.apiUrl, categoria);
   }
 
   actualizarCategoria(id: number, categoria: Partial<Categoria>): Observable<Categoria> {
-    return this.http.put<Categoria>(`${this.apiUrl}/${id}`, categoria, {
-      headers: this.obtenerHeaders()
-    });
+    return this.http.put<Categoria>(`${this.apiUrl}/${id}`, categoria);
   }
 
   eliminarCategoria(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`, {
-      headers: this.obtenerHeaders()
-    });
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

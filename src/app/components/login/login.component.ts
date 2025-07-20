@@ -26,35 +26,26 @@ export class LoginComponent {
     this.error = '';
 
     // Hacemos una petición POST al backend con el email y password ingresados
-    this.http.post<{ token: string }>('http://localhost:3000/api/auth/login', {
+    this.http.post<any>('http://localhost:3000/api/auth/login', {
       email: this.email,
       password: this.password
     }).subscribe({
-      // Si la respuesta es exitosa (status 200)
       next: (res) => {
-        // Mostrar en consola la respuesta recibida (que incluye el token JWT)
+        // Ya no se guarda token ni se espera token
         console.log('Login exitoso:', res);
-
-        // Guardar el token JWT en localStorage para usarlo en futuras peticiones
-        localStorage.setItem('token', res.token);
-
-        // Redirigir al usuario a la página principal o protegida después del login
+        // Redirigir al usuario a la página principal después del login
         this.router.navigate(['pages/home']);
       },
-      // Si ocurre un error en la petición (status 4xx o 5xx)
       error: (err) => {
-        // Mostrar en consola el error para depuración
         console.error('Error en login:', err);
-
-        // Mostrar mensajes específicos según el código de error HTTP
         if (err.status === 401) {
-          this.error = 'Contraseña incorrecta';            // Error de autenticación
+          this.error = 'Contraseña incorrecta';
         } else if (err.status === 404) {
-          this.error = 'Usuario no encontrado';             // Usuario no existe
+          this.error = 'Usuario no encontrado';
         } else if (err.error?.message) {
-          this.error = err.error.message;                    // Mensaje personalizado del backend
+          this.error = err.error.message;
         } else {
-          this.error = 'Error al iniciar sesión. Intenta nuevamente.';  // Mensaje genérico
+          this.error = 'Error al iniciar sesión. Intenta nuevamente.';
         }
       }
     });

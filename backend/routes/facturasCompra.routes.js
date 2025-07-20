@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { auth, adminAuth } = require('../middlewares/auth');
+// Middlewares de autenticación eliminados
 const {
     createFacturaCompra,
     getFacturasCompra,
@@ -17,8 +17,8 @@ const validarCrearFactura = [
     body('detalles.*.precio_unitario').isFloat({ min: 0 }).withMessage('Precio inválido')
 ];
 
-router.post('/', auth, adminAuth, validarCrearFactura, createFacturaCompra);
-router.get('/', auth, adminAuth, getFacturasCompra);
-router.get('/:id', auth, adminAuth, param('id').isInt(), getDetalleFacturaCompra);
+router.post('/', validarCrearFactura, createFacturaCompra);
+router.get('/', getFacturasCompra);
+router.get('/:id', param('id').isInt(), getDetalleFacturaCompra);
 
 module.exports = router;

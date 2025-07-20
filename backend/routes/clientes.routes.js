@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { auth, adminAuth } = require('../middlewares/auth');
+// Middlewares de autenticación eliminados
 const {
     getAllClientes,
     getClienteById,
@@ -24,11 +24,11 @@ router.get('/', getAllClientes);
 router.get('/:id', param('id').isInt(), getClienteById);
 
 // Rutas protegidas
-router.post('/', auth, adminAuth, validarCliente, createCliente);
-router.put('/:id', auth, adminAuth, param('id').isInt(), validarCliente, updateCliente);
-router.delete('/:id', auth, adminAuth, param('id').isInt(), deleteCliente);
+router.post('/', validarCliente, createCliente);
+router.put('/:id', param('id').isInt(), validarCliente, updateCliente);
+router.delete('/:id', param('id').isInt(), deleteCliente);
 
 // Movimientos del cliente
-router.get('/:id/movimientos', auth, param('id').isInt(), getMovimientosCliente);
+router.get('/:id/movimientos', param('id').isInt(), getMovimientosCliente);
 
 module.exports = router;

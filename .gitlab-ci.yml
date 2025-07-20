@@ -1,0 +1,34 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  NODE_ENV: 'production'
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
+
+build_app:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+test_app:
+  stage: test
+  script:
+    - npm run test -- --watch=false --browsers=ChromeHeadless
+
+deploy_app:
+  stage: deploy
+  script:
+    - echo "Despliegue exitoso (aquí va tu comando real de deploy)"
+  only:
+    - main

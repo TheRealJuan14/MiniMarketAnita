@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { auth, adminAuth } = require('../middlewares/auth');
+// Middlewares de autenticación eliminados
 const {
     getAllFormasPago,
     getFormaPagoById,
@@ -21,8 +21,8 @@ router.get('/', getAllFormasPago);
 router.get('/:id', param('id').isInt(), getFormaPagoById);
 
 // Rutas protegidas (solo admin)
-router.post('/', auth, adminAuth, validarFormaPago, createFormaPago);
-router.put('/:id', auth, adminAuth, param('id').isInt(), validarFormaPago, updateFormaPago);
-router.delete('/:id', auth, adminAuth, param('id').isInt(), deleteFormaPago);
+router.post('/', validarFormaPago, createFormaPago);
+router.put('/:id', param('id').isInt(), validarFormaPago, updateFormaPago);
+router.delete('/:id', param('id').isInt(), deleteFormaPago);
 
 module.exports = router;

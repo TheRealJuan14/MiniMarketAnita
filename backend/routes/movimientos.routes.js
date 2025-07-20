@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { auth, adminAuth } = require('../middlewares/auth');
+// Middlewares de autenticación eliminados
 const {
     getMovimientosProducto,
     registrarMovimientoProducto
@@ -15,13 +15,13 @@ const validarMovimientoProducto = [
     body('motivo').optional().isLength({ max: 255 }).withMessage('Máximo 255 caracteres')
 ];
 
-router.get('/productos', auth, [
+router.get('/productos', [
     query('producto_id').optional().isInt(),
     query('tipo').optional().isIn(['entrada', 'salida']),
     query('fecha_inicio').optional().isISO8601(),
     query('fecha_fin').optional().isISO8601()
 ], getMovimientosProducto);
 
-router.post('/productos', auth, adminAuth, validarMovimientoProducto, registrarMovimientoProducto);
+router.post('/productos', validarMovimientoProducto, registrarMovimientoProducto);
 
 module.exports = router;

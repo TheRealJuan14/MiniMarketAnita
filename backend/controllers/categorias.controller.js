@@ -26,7 +26,7 @@ const getCategoriaById = async (req, res, next) => {
 
 const createCategoria = async (req, res, next) => {
     try {
-        const { nombre } = req.body;
+        const { nombre, descripcion } = req.body;
         // Verificar si ya existe una categoría con ese nombre
         const { rows: existentes } = await pool.query(
             'SELECT id FROM categorias WHERE LOWER(nombre) = LOWER($1) LIMIT 1',
@@ -36,8 +36,8 @@ const createCategoria = async (req, res, next) => {
             return res.status(400).json({ message: 'La categoría ya existe' });
         }
         const { rows } = await pool.query(
-            'INSERT INTO categorias (nombre) VALUES ($1) RETURNING *',
-            [nombre]
+            'INSERT INTO categorias (nombre, descripcion) VALUES ($1, $2) RETURNING *',
+            [nombre, descripcion || null]
         );
         res.status(201).json(rows[0]);
     } catch (err) {
@@ -48,17 +48,14 @@ const createCategoria = async (req, res, next) => {
 const updateCategoria = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { nombre } = req.body;
-        
+        const { nombre, descripcion } = req.body;
         const { rows } = await pool.query(
-            'UPDATE categorias SET nombre = $1 WHERE id = $2 RETURNING *',
-            [nombre, id]
+            'UPDATE categorias SET nombre = $1, descripcion = $2 WHERE id = $3 RETURNING *',
+            [nombre, descripcion || null, id]
         );
-        
         if (rows.length === 0) {
             return res.status(404).json({ message: 'Categoría no encontrada' });
         }
-        
         res.json(rows[0]);
     } catch (err) {
         next(err);

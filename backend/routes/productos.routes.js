@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { auth, adminAuth } = require('../middlewares/auth');
+// Middlewares de autenticación eliminados
 const {
     getAllProductos,
     getProductoById,
@@ -16,9 +16,9 @@ router.get('/', getAllProductos);
 router.get('/:id', getProductoById);
 
 // Rutas protegidas (requieren autenticación)
-router.post('/', auth, adminAuth, createProducto);
-router.put('/:id', auth, adminAuth, updateProducto);
-router.delete('/:id', auth, adminAuth, deleteProducto);
+router.post('/', createProducto);
+router.put('/:id', updateProducto);
+router.delete('/:id', deleteProducto);
 
 
 module.exports = router;

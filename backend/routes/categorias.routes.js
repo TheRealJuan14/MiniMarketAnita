@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { auth, adminAuth } = require('../middlewares/auth');
+// Middlewares de autenticación eliminados
 const {
   getAllCategorias,
   getCategoriaById,
@@ -40,8 +40,8 @@ router.get('/', getAllCategorias);
 router.get('/:id', param('id').isInt(), validarCampos, getCategoriaById);
 
 // 🔐 Rutas protegidas (con autenticación y autorización de admin)
-router.post('/', auth, adminAuth, validarCrearCategoria, createCategoria);
-router.put('/:id', auth, adminAuth, validarActualizarCategoria, updateCategoria);
-router.delete('/:id', auth, adminAuth, validarEliminarCategoria, deleteCategoria);
+router.post('/', validarCrearCategoria, createCategoria);
+router.put('/:id', validarActualizarCategoria, updateCategoria);
+router.delete('/:id', validarEliminarCategoria, deleteCategoria);
 
 module.exports = router;

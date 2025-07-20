@@ -1,7 +1,8 @@
 -- Tabla: categorias
 CREATE TABLE categorias (
     id SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT
 );
 
 -- Tabla: productos
@@ -34,6 +35,8 @@ CREATE TABLE usuarios (
 CREATE TABLE clientes (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    dni VARCHAR(20) UNIQUE NOT NULL,
     telefono VARCHAR(20),
     direccion TEXT
 );
@@ -42,8 +45,10 @@ CREATE TABLE clientes (
 CREATE TABLE proveedores (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
+    ruc VARCHAR(20) UNIQUE NOT NULL,
+    direccion TEXT,
     telefono VARCHAR(20),
-    direccion TEXT
+    email VARCHAR(100)
 );
 
 -- Tabla: movimientos_producto

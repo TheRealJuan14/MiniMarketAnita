@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // Interceptor funcional JWT (para enviar token en headers)
-import { jwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
+// import eliminado: ya no se usa ningún interceptor JWT
 
 // Angular Material módulos usados para UI
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -83,11 +83,8 @@ import { MenuModule } from 'primeng/menu';
     // Proveedor para hidratación cliente-servidor (SSR, si usas)
     provideClientHydration(withEventReplay()),
 
-    // Proveedor para el cliente HTTP con interceptores funcionales
-    provideHttpClient(
-      // Registra el interceptor funcional JWT para agregar token en headers
-      withInterceptors([jwtInterceptorInterceptor])
-    )
+    // Proveedor para el cliente HTTP sin interceptores
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]  // Componente raíz para bootstrap
 })

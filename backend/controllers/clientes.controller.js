@@ -26,10 +26,10 @@ const getClienteById = async (req, res, next) => {
 
 const createCliente = async (req, res, next) => {
     try {
-        const { nombre, telefono, direccion } = req.body;
+        const { nombre, apellido, dni, telefono, direccion } = req.body;
         const { rows } = await pool.query(
-            'INSERT INTO clientes (nombre, telefono, direccion) VALUES ($1, $2, $3) RETURNING *',
-            [nombre, telefono, direccion]
+            'INSERT INTO clientes (nombre, apellido, dni, telefono, direccion) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [nombre, apellido, dni, telefono, direccion]
         );
         res.status(201).json(rows[0]);
     } catch (err) {
@@ -40,17 +40,14 @@ const createCliente = async (req, res, next) => {
 const updateCliente = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { nombre, telefono, direccion } = req.body;
-        
+        const { nombre, apellido, dni, telefono, direccion } = req.body;
         const { rows } = await pool.query(
-            'UPDATE clientes SET nombre = $1, telefono = $2, direccion = $3 WHERE id = $4 RETURNING *',
-            [nombre, telefono, direccion, id]
+            'UPDATE clientes SET nombre = $1, apellido = $2, dni = $3, telefono = $4, direccion = $5 WHERE id = $6 RETURNING *',
+            [nombre, apellido, dni, telefono, direccion, id]
         );
-        
         if (rows.length === 0) {
             return res.status(404).json({ message: 'Cliente no encontrado' });
         }
-        
         res.json(rows[0]);
     } catch (err) {
         next(err);
